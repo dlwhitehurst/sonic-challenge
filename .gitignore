@@ -1,0 +1,7 @@
+/target
+/lib
+/bin
+cobertura.ser
+/.settings
+.project
+.classpath
