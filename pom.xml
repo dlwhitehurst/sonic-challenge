@@ -7,8 +7,12 @@
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>Sonic Order Library</name>
+    
+    <prerequisites>
+        <maven>3.3.9</maven>
+    </prerequisites>
 
-   <developers>
+    <developers>
         <developer>
             <id>dlwhitehurst</id>
             <name>David Whitehurst</name>
@@ -80,7 +84,7 @@
 	            <plugin>
 	                <artifactId>maven-checkstyle-plugin</artifactId>
 	                <configuration>
-	                    <!-- need a checkstyle.xml -->
+	                    <!-- need a checkstyle.xml .. default in use -->
 	                    <configLocation></configLocation>
 	                </configuration>
 	            </plugin>
