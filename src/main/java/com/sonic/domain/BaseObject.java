@@ -1,20 +1,17 @@
-/**
- * 
- */
 package com.sonic.domain;
 
 import java.io.Serializable;
 
 /**
- * This class provides the Java Object overriden methods recommended by Joshua J. Bloch,
- * author of Effective Java, Second Edition
- * 
+ * This class provides the Java Object overriden methods recommended 
+ * by Joshua J. Bloch, author of Effective Java, Second Edition
+ *
  * @author <a href="mailto:david@ciwise.com">David L. Whitehurst</a>
  */
 public abstract class BaseObject implements Serializable {
 
 	/**
-	 * unique serial class identifier
+	 * Unique serial class identifier.
 	 */
 	private static final long serialVersionUID = -9157212094150650829L;
 
@@ -25,8 +22,8 @@ public abstract class BaseObject implements Serializable {
     public abstract String toString();
 
     /**
-     * Compares object equality. 
-     * @param o object to compare to
+     * Compares object equality.
+     *  @param o object to compare to
      * @return true/false based on equality tests
      */
     public abstract boolean equals(Object o);

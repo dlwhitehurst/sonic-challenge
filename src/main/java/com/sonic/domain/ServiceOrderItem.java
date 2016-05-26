@@ -18,8 +18,8 @@ public class ServiceOrderItem extends OrderItem {
 
 	/**
 	 * Constructor
-	 * @param anItem
-	 * @param aQuantity
+	 * @param anItem final company item to be used with quantity to create the order item
+	 * @param aQuantity quantity of specific items for order
 	 */
 	public ServiceOrderItem(final Item anItem, final Integer aQuantity) {
 		this.item = anItem;

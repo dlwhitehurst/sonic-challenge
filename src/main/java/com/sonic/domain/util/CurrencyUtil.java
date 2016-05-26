@@ -4,10 +4,12 @@ import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+import com.sonic.common.Constants;
+
 /**
  * 
  * @author <a href="mailto:david@ciwise.com">David L. Whitehurst</a>
- *
+ *  
  */
 public class CurrencyUtil {
 
@@ -25,11 +27,12 @@ public class CurrencyUtil {
 
 	/**
 	 * This method returns a string representation for money stored as BigDecimal
-	 * @param value the numeric currency value
+	 * @param bd the numeric currency value
 	 * @return string representation of big decimal object
 	 */
-	public static String getBigDecimalCurrencyString(BigDecimal value) {
-		value = value.setScale(US_DECIMAL_PLACES, BigDecimal.ROUND_HALF_UP);
+	public static String getBigDecimalCurrencyString(final BigDecimal bd) {
+		BigDecimal value = bd;
+		value = value.setScale(Constants.US_DECIMAL_PLACES, BigDecimal.ROUND_HALF_UP);
 
 		NumberFormat nf = getCurrencyFormat();
 		double money = value.doubleValue();

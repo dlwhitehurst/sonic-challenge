@@ -63,16 +63,16 @@ public abstract class OrderItem extends BaseObject implements Comparable<OrderIt
 		return this.quantity;
 	}
 
-	public void setItem(Item _item) {
-		this.item = _item;
+	public void setItem(final Item anItem) {
+		this.item = anItem;
 	}
 
-	public void setParentOrder(Order _parent) {
-		this.parent = _parent;
+	public void setParentOrder(final Order aParent) {
+		this.parent = aParent;
 	}
 
-	public void setQuantity(Integer _quantity) {
-		this.quantity = _quantity;
+	public void setQuantity(final Integer aQuantity) {
+		this.quantity = aQuantity;
 	}
 
 	@Override
