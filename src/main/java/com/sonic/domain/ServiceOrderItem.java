@@ -18,16 +18,16 @@ public class ServiceOrderItem extends OrderItem {
 
 	/**
 	 * Constructor
-	 * @param _item
-	 * @param _quantity
+	 * @param anItem
+	 * @param aQuantity
 	 */
-	public ServiceOrderItem(Item _item, Integer _quantity) {
-		this.item = _item;
-		this.quantity = _quantity;
+	public ServiceOrderItem(final Item anItem, final Integer aQuantity) {
+		this.item = anItem;
+		this.quantity = aQuantity;
 	}
 	
 	@Override
-	public boolean isTaxable() {
+	public final boolean isTaxable() {
 		return false;
 	}
 

@@ -6,6 +6,7 @@ package com.sonic.domain;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import com.sonic.common.Constants;
 import com.sonic.domain.util.CurrencyUtil;
 
 import java.math.BigDecimal;
@@ -59,27 +60,27 @@ public final class Item extends BaseObject {
 	 * allow for revision. NOTE: I would change constructor to take a string price because this should
 	 * be validated for a currency format.
 	 *  
-	 * @param _key unique numeric identifier
-	 * @param _name descriptive term for item
-	 * @param _price cost
+	 * @param aKey unique numeric identifier
+	 * @param aName descriptive term for item
+	 * @param aPrice cost
 	 */
-	public Item(Long _key, String _name, String _price) {
+	public Item(final Long aKey, final String aName, final String aPrice) {
 		
 		/**
 		 * according to the method of persistence, this may or may not be needed
 		 */
-		if (_key == null) {
-			this.key = (-1L);
+		if (aKey == null) {
+			this.key = -1L;
 		} else {
-			this.key = _key;
+			this.key = aKey;
 		}
-		if (_name == null || _name.equals("")) {
+		if (aName == null || aName.equals("")) {
 			this.name = "Invalid name or null value";
 		} else {
-			this.name = _name;
+			this.name = aName;
 		}
-		if (acceptablePriceFormat(_price)) {
-			BigDecimal tmp = new BigDecimal(_price);
+		if (acceptablePriceFormat(aPrice)) {
+			BigDecimal tmp = new BigDecimal(aPrice);
 			tmp = tmp.setScale(2, BigDecimal.ROUND_HALF_UP);
 			this.price = tmp;
 		} else {
@@ -118,7 +119,7 @@ public final class Item extends BaseObject {
 	 * be sufficient for use in our context.
 	 */
 	@Override
-	public boolean equals(Object o) {
+	public boolean equals(final Object o) {
 	       if (this == o) {
 	            return true;
 	        }
@@ -139,12 +140,12 @@ public final class Item extends BaseObject {
 	public int hashCode() {
 		   int result;
 	        result = (this.key != null ? this.key.hashCode() : 0);
-	        result = 29 * result + (this.name != null ? this.name.hashCode() : 0);
-	        result = 29 * result + (this.price != null ? this.price.hashCode() : 0);
+	        result = Constants.MAGIC_HASHCODE_FACTOR * result + (this.name != null ? this.name.hashCode() : 0);
+	        result = Constants.MAGIC_HASHCODE_FACTOR * result + (this.price != null ? this.price.hashCode() : 0);
 	        return result;	
 	}
 	
-	private boolean acceptablePriceFormat(String aPrice) {
+	private boolean acceptablePriceFormat(final String aPrice) {
 		boolean retVal = true;
 		
 		if (!aPrice.matches("^\\d+(\\.\\d{2})?$")) {

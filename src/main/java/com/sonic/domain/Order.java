@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+import com.sonic.common.Constants;
 import com.sonic.domain.util.CurrencyUtil;
 
 /**
@@ -17,7 +21,7 @@ import com.sonic.domain.util.CurrencyUtil;
  * @author <a href="mailto:david@ciwise.com">David L. Whitehurst</a>
  *
  */
-public final class Order implements Serializable {
+public final class Order extends BaseObject implements Serializable {
 
 	/**
 	 * unique serial class identifier 
@@ -178,5 +182,33 @@ public final class Order implements Serializable {
 		}
 
 		return retVal;
+	}
+
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
+                .append("order", this.order.toString())
+                .append("size", this.order.size()).toString();
+	}
+
+	@Override
+	public boolean equals(final Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (!(o instanceof Order)) {
+			return false;
+		}
+
+		final Order tmp = (Order) o;
+
+		return this.hashCode() == tmp.hashCode();
+	}
+
+	@Override
+	public int hashCode() {
+		   int result;
+	        result = Constants.MAGIC_HASHCODE_FACTOR * (this.order != null ? this.order.hashCode() : 0);
+	        return result;	
 	}
 }

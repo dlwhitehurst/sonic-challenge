@@ -18,16 +18,16 @@ public class MaterialOrderItem extends OrderItem {
 
 	/**
 	 * Constructor
-	 * @param _item company item
-	 * @param _quantity how many
+	 * @param anItem company item
+	 * @param aQuantity how many
 	 */
-	public MaterialOrderItem(Item _item, Integer _quantity) {
-		this.item = _item;
-		this.quantity = _quantity;
+	public MaterialOrderItem(final Item anItem, final Integer aQuantity) {
+		this.item = anItem;
+		this.quantity = aQuantity;
 	}
 	
 	@Override
-	public boolean isTaxable() {
+	public final boolean isTaxable() {
 		return true;
 	}
 

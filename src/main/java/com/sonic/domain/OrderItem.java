@@ -6,6 +6,8 @@ package com.sonic.domain;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import com.sonic.common.Constants;
+
 /**
  * This class is a composite object that abstracts the business item here called
  * an OrderItem. The object is a protected and persisted entity that is unique only
@@ -44,7 +46,7 @@ public abstract class OrderItem extends BaseObject implements Comparable<OrderIt
 	protected Integer quantity;
 
 	/**
-	 * This method should return true if the implementing object should be taxed.
+	 * This method should return boolean if the implementing object should be taxed.
 	 * @return taxable boolean
 	 */
 	public abstract boolean isTaxable();
@@ -80,7 +82,7 @@ public abstract class OrderItem extends BaseObject implements Comparable<OrderIt
 	}
 	
 	@Override
-	public boolean equals(Object o) {
+	public boolean equals(final Object o) {
 		if (this == o) {
 			return true;
 		}
@@ -100,8 +102,8 @@ public abstract class OrderItem extends BaseObject implements Comparable<OrderIt
 	public int hashCode() {
 		int result;
 		result = (this.parent != null ? this.parent.hashCode() : 0);
-		result = 29 * result + (this.item != null ? this.item.hashCode() : 0);
-		result = 29 * result + (this.quantity != null ? this.quantity.hashCode() : 0);
+		result = Constants.MAGIC_HASHCODE_FACTOR * result + (this.item != null ? this.item.hashCode() : 0);
+		result = Constants.MAGIC_HASHCODE_FACTOR * result + (this.quantity != null ? this.quantity.hashCode() : 0);
 		return result;
 	}
 	
