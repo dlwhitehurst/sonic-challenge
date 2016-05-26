@@ -25,7 +25,8 @@ public final class Item extends BaseObject {
 	private static final long serialVersionUID = -2947977059822270139L;
 
 	/**
-	 * unique identifier for persistence methods
+	 * unique identifier for persistence methods and needs to persist through
+	 * using code to maintain its uniqueness
 	 */
 	private final Long key;
 	

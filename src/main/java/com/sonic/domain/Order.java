@@ -43,27 +43,41 @@ public final class Order implements Serializable {
 	public Order(OrderItem[] theOrder) {
 
 		if (theOrder == null || theOrder.length == 0 || theOrder.length > MAX_ORDER_SIZE) {
-			this.order = null;
+			throw new RuntimeException();
+		}
+
+		if (validateOrderPriorToCreation(theOrder)) {
+			List<OrderItem> tmp = new ArrayList<OrderItem>();
+			for (int i=0; i < theOrder.length; i++) {
+				// load our private immutable list
+				if (theOrder[i] instanceof OrderItem) {
+					tmp.add(theOrder[i]);
+				}
+			}
+			// finalize data structure
+			this.order = tmp;
+		} else {
 			throw new RuntimeException();
 		}
 		
-		List<OrderItem> tmp = new ArrayList<OrderItem>();
-		for (int i=0; i < theOrder.length; i++) {
-			// load our private immutable list
-			if (theOrder[i] instanceof OrderItem) {
-				tmp.add(theOrder[i]);
-			}
-		}
-		// finalize data structure
-		this.order = tmp;
 	}
 	
+	
 	/**
-	 * The BEST constructor
+	 * The preferred constructor
 	 * @param theOrder list of order items
 	 */
 	public Order(List<OrderItem> theOrder) {
-		this.order = theOrder;
+
+		if (theOrder == null || theOrder.isEmpty() || theOrder.size() > MAX_ORDER_SIZE) {
+			throw new RuntimeException();
+		}
+		
+		if (validateOrderPriorToCreation(theOrder)) {
+			this.order = theOrder;
+		} else {
+			throw new RuntimeException();
+		}
 	}
 	
 	/**
@@ -115,5 +129,17 @@ public final class Order implements Serializable {
 	public Object[] getUnsafeItems() {
 		Collections.sort(this.order);
 		return this.order.toArray();
+	}
+	
+	private boolean validateOrderPriorToCreation(OrderItem[] orderItems) {
+		// TODO - implement for security
+		boolean retVal = true;
+		return retVal;
+	}
+	
+	private boolean validateOrderPriorToCreation(List<OrderItem> orderItems) {
+		// TODO - implement for security
+		boolean retVal = true;
+		return retVal;
 	}
 }

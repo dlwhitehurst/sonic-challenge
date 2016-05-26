@@ -9,7 +9,13 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 /**
  * This class is a composite object that abstracts the business item here called
  * an OrderItem. The object is a protected and persisted entity that is unique only
- * to its parent order.
+ * to its parent order. The order item, however needs to be flexible (allow revision)
+ * but help provide quality of data prior to the creation of the (final) order. The
+ * Item is unique but OrderItem uniqueness is not currently enforced. A different
+ * kind of constraint is needed where:
+ * 
+ * 1) Item keys should never be duplicated within an order regardless of name
+ * 2) Multiple, valid items with different quantities should never occur.
  *  
  * @author <a href="mailto:david@ciwise.com">David L. Whitehurst</a>
  *
