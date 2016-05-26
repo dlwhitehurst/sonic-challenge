@@ -14,10 +14,6 @@ public class TestOrder {
 
 	protected final Log log = LogFactory.getLog(getClass());
 
-	/**
-	 * Creates order using array of OrderItem constructor
-	 * @return preloaded order with a material item and service item
-	 */
 	private Order createOrderUsingArray() {
 
 		Item item1 = new Item((30L), "Rocks","0.10");
@@ -35,10 +31,6 @@ public class TestOrder {
 		return order;
 	}
 	
-	/**
-	 * Creates order using type-safe List of OrderItem(s)
-	 * @return preload order with a material item and service item
-	 */
 	private Order createOrderUsingList() {
 
 		Item item1 = new Item((424444444L), "Dirt","0.10");
