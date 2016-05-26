@@ -99,7 +99,6 @@ public abstract class OrderItem extends BaseObject implements Comparable<OrderIt
 		return result;
 	}
 	
-	@Override
 	public int compareTo(OrderItem orderItem) {
 		int nameCmp = this.item.getName().compareTo(orderItem.getItem().getName());
 		return (nameCmp != 0 ? nameCmp : 0);
