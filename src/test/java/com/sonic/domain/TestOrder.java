@@ -109,5 +109,43 @@ public class TestOrder {
 			}
 		}
 	}
+	
+	@Test
+	public void testSortedOrderItems() {
+		// TODO - fix implementation to not allow same Long key
+		Item item1 = new Item(1L, "Dog","1.45");
+		Item item2 = new Item(2L, "Cat", "2.99");
+		Item item3 = new Item(3L, "Ardvark", "3.99");
+		Item item4 = new Item(4L, "Apple", "2.99");
+		Item item5 = new Item(5L, "Aeone", "5.99");
+		Item item6 = new Item(6L, "Horse", "6.99");
+		Item item7 = new Item(7L, "Caterpillar", "1.99");
+		
+		MaterialOrderItem m1 = new MaterialOrderItem(item1, 1);
+		MaterialOrderItem m2 = new MaterialOrderItem(item2, 1);
+		MaterialOrderItem m3 = new MaterialOrderItem(item3, 1);
+		MaterialOrderItem m4 = new MaterialOrderItem(item4, 1);
+		MaterialOrderItem m5 = new MaterialOrderItem(item5, 1);
+		MaterialOrderItem m6 = new MaterialOrderItem(item6, 1);
+		MaterialOrderItem m7 = new MaterialOrderItem(item7, 1);
+		
+		List<OrderItem> items = new ArrayList<OrderItem>();
+		items.add(m1);
+		items.add(m2);
+		items.add(m3);
+		items.add(m4);
+		items.add(m5);
+		items.add(m6);
+		items.add(m7);
+		
+		Order order = new Order(items);
+		List<OrderItem> orderItems = order.getItems();
+		
+		for (OrderItem orderItem: orderItems) {
+			log.info(orderItem.getItem().getName());
+		}
+
+		
+	}
 
 }
