@@ -85,6 +85,40 @@ public class TestOrder {
 	}
 	
 	@Test
+	public void testOrderCreationUsingItemsSameKey() {
+		Item item1 = new Item((1234L), "Wood Board","1.00");
+		Item item2 = new Item((1234L), "Water Bucket", "2.00");
+		
+		MaterialOrderItem m1 = new MaterialOrderItem(item1, 10);
+		MaterialOrderItem m2 = new MaterialOrderItem(item2, 10);
+		
+		OrderItem[] anArray = new OrderItem[2];
+		anArray[0] = m1;
+		anArray[1] = m2;
+		
+		Order order = new Order(anArray);
+		
+		// validate using array created order
+		assertNotNull(order);
+		
+		List<OrderItem> items = new ArrayList<OrderItem>();
+		items.add(m1);
+		items.add(m2);
+		
+		order = null;
+		order =new Order(items);
+		
+		// attempt to validate a new order again created with a Java typed collection
+		assertNotNull(order);
+		assertEquals(order.getItems().size(),2);
+		
+		for (OrderItem item: order.getItems()) {
+			log.info(item.getItem().getKey() + ":" + item.getItem().getName());
+		}
+		
+	}
+	
+	@Test
 	public void testOrderCreation() {
 		
 		// data
