@@ -132,14 +132,51 @@ public final class Order implements Serializable {
 	}
 	
 	private boolean validateOrderPriorToCreation(OrderItem[] orderItems) {
-		// TODO - implement for security
 		boolean retVal = true;
+		for (int i=0; i < orderItems.length; i++) {
+			// inspect our private list before it's immutable
+			if (orderItems[i] instanceof OrderItem) {
+				// okay, save this orderItem and compare against the others
+				for (int j=0; j < orderItems.length; j++) {
+					if (i != j) {
+						if (orderItems[i].equals(orderItems[j])) {
+							// complete duplicate
+							retVal = false;
+						}
+						if (orderItems[i].getItem().getKey().longValue() == orderItems[j].getItem().getKey().longValue()) {
+							/**
+							 *  Duplicate item keys, possible need to combine into single OrderItem, adding quantities.
+							 *  This is really a code issue
+							 */
+							retVal = false;
+						}
+					}
+				}
+			}
+		}
 		return retVal;
 	}
 	
 	private boolean validateOrderPriorToCreation(List<OrderItem> orderItems) {
-		// TODO - implement for security
 		boolean retVal = true;
+		for (OrderItem orderItem: orderItems) {
+			// inspect our private list before it's immutable
+			if (orderItem instanceof OrderItem) {
+				// okay, save this orderItem and compare against the others
+				for (OrderItem innerOrderItem: orderItems) {
+					if (!orderItem.equals(innerOrderItem)) {
+						if (orderItem.getItem().getKey().longValue() == innerOrderItem.getItem().getKey().longValue()) {
+							/**
+							 *  Duplicate item keys, possible need to combine into single OrderItem, adding quantities.
+							 *  This is really a code issue
+							 */
+							retVal = false;
+						}
+					}
+				}
+			}
+		}
+
 		return retVal;
 	}
 }
