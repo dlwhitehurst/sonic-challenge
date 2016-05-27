@@ -14,17 +14,7 @@ public class TestItem {
 	
 	@Test
 	public void testItemDefaultConstruction() {
-		
-		Item item = new Item();
-		assertNotNull(item);
-		assertNotNull(item.getKey());
-		assertNotNull(item.getName());
-		assertNotNull(item.getPrice());
-		
-		assertEquals(item.getKey(), new Long(-1));
-		assertEquals(item.getName(), "Invalid item construction.");
-		assertEquals(item.getPrice(), new BigDecimal("0.00"));
-		
+	    fail("Can't create default constructor because it's private now.");
 	}
 	
 	@Test

@@ -42,17 +42,15 @@ public final class Item extends BaseObject {
     private final BigDecimal price;
 
     /**
-     * Default constructor should only initialize with values that mean nothing.
-     * One could create and throw a RuntimeException.
+     * This prevents default construction.
      */
-    public Item() {
-        this.key = (-1L);
-        this.name = "Invalid item construction.";
-        BigDecimal tmp = new BigDecimal("0.00");
-        tmp = tmp.setScale(2, BigDecimal.ROUND_HALF_UP);
-        this.price = tmp;
+    @SuppressWarnings("unused")
+    private Item() { 
+        this.key = null;
+        this.name = null;
+        this.price = null;
     }
-
+    
     /**
      * Our constructor creates a "valuable" object with one call. The
      * requirements call for the object to be immutable. Remove the final
