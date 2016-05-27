@@ -131,9 +131,9 @@ public class TestOrder {
 		
 		// validation
 		assertNotNull(order);
-		assertNotNull(order.getItems());
-		assertEquals(order.getItems().size(),2);
-		log.info(order.getItems().size()); 
+		assertNotNull(order.getOrderItems());
+		assertEquals(order.getOrderItems().size(),2);
+		log.info(order.getOrderItems().size()); 
 
 		// data
 		order = null;
@@ -141,8 +141,8 @@ public class TestOrder {
 		
 		// validation
 		assertNotNull(order);
-		assertNotNull(order.getItems());
-		assertEquals(order.getItems().size(),2);
+		assertNotNull(order.getOrderItems());
+		assertEquals(order.getOrderItems().size(),2);
 		log.info(order.toString()); 
 		
 	}
@@ -176,7 +176,7 @@ public class TestOrder {
 
 		// data
 		Order order = createOrderUsingArray();
-		List<OrderItem> items = order.getItems();
+		List<OrderItem> items = order.getOrderItems();
 		
 		// validation
 		assertNotNull(items);
@@ -189,7 +189,7 @@ public class TestOrder {
 		// data
 		Order order = createOrderUsingArray();
 		Object[] items = new Object[2];
-		items = order.getUnsafeItems();
+		items = order.getOrderItemArray();
 		int count = 0;
 		for (int i=0; i<2; i++) {
 			Object obj = items[i];
@@ -206,7 +206,7 @@ public class TestOrder {
 	@Test
 	public void testSortedOrderItems() {
 		Order order = createLargeOrder();
-		List<OrderItem> orderItems = order.getItems();
+		List<OrderItem> orderItems = order.getOrderItems();
 		
 		for (OrderItem orderItem: orderItems) {
 			log.info(orderItem.getItem().getName());

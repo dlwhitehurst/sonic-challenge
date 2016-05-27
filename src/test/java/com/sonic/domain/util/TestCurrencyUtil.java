@@ -3,8 +3,7 @@
  */
 package com.sonic.domain.util;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
@@ -45,5 +44,13 @@ public class TestCurrencyUtil {
 	public void testGetCurrencyNumberFormat() {
 		NumberFormat nf = CurrencyUtil.getCurrencyFormat();
 		assertNotNull(nf);
+	}
+	
+	@Test
+	public void testGetStringCurrencyReps() {
+	    String tmp = "334.23";
+	    boolean test = CurrencyUtil.acceptableStringCurrencyFormat(tmp);
+	    assertTrue(test);
+	 
 	}
 }
