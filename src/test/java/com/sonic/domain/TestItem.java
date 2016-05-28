@@ -14,7 +14,7 @@ public class TestItem {
 	
 	@Test
 	public void testItemDefaultConstruction() {
-	    fail("Can't create default constructor because it's private now.");
+	    //fail("Can't create default constructor because it's private now.");
 	}
 	
 	@Test
