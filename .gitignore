@@ -1,7 +1,13 @@
-/target
 /lib
 /bin
+/target
 cobertura.ser
-/.settings
+
+#Eclipse files
+.settings
 .project
 .classpath
+.checkstyle
+.pmd
+.pmdruleset
+.metadata
