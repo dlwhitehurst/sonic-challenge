@@ -7,13 +7,11 @@ package com.sonic.common;
  *
  */
 public final class Constants {
-
-    /**
-     * No default construction.
-     */
+    
     private Constants() {
+        // no public default construction
     }
-
+    
     /**
      * An Integer to use when implementing hashCode().
      */

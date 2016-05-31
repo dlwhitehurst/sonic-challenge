@@ -13,6 +13,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import com.sonic.common.Constants;
+import com.sonic.common.Security;
 import com.sonic.domain.util.CurrencyUtil;
 
 /**
@@ -22,7 +23,7 @@ import com.sonic.domain.util.CurrencyUtil;
  * @author <a href="mailto:david@ciwise.com">David L. Whitehurst</a>
  *
  */
-public final class Order extends BaseObject implements Serializable {
+public final class Order extends BaseObject implements Serializable, Security {
 
     /**
      * A unique serial class identifier.
@@ -55,6 +56,10 @@ public final class Order extends BaseObject implements Serializable {
      *            array of order items
      */
     public Order(final OrderItem[] theOrder) {
+
+        if (!isSecure()) {
+            throw new RuntimeException("Class is not secure for construction and use.");
+        }
 
         if (theOrder == null || theOrder.length == 0
                 || theOrder.length > MAX_ORDER_SIZE) {
@@ -260,4 +265,12 @@ public final class Order extends BaseObject implements Serializable {
         }
         return result;
     }
+
+    /* (non-Javadoc)
+     * @see com.sonic.common.Security#isSecure()
+     */
+    public boolean isSecure() {
+        return true;
+    }
+
 }
