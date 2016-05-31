@@ -6,6 +6,8 @@ my submittal. I wrapped the project with a Maven POM to allow easy building and 
 
 I also added several reporting plugins that assist with testing, code quality, and code style. The POM allows the creation of a real Maven site and that provides more insight into the intelligence of what we are trying to accomplish.
 
+The Maven Project is actually hosted [here] (http://dlwhitehurst.com/sonic-challenge)
+
 ## Building, Testing, and Project Site Creation
 
 I currently use Apache Maven version 3.3.9. This is enforced in the POM. You can modify or remove the prerequisites snippet but I'm not guaranteeing everything will work.
